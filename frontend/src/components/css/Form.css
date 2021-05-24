@@ -1,0 +1,10 @@
+.ant-form-item-label > label {
+    color: rgba(255,255,255,0.65) !important;
+}
+
+.Form {
+    background:rgba(60,60,0,0.5);
+    padding:30px;
+    position: relative;
+    top: -100px;
+}

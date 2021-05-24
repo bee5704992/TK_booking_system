@@ -1,0 +1,23 @@
+.ant-table-container {
+    overflow: auto;
+}
+.statusTable svg {
+    color: #1890ff;
+    
+}
+.ant-pagination-item-active {
+    border-color: white !important;
+}
+.ant-pagination-item a {
+    color: white !important;
+}
+.ant-pagination-item-active a {
+    color: #1890ff !important;
+}
+.ant-table-small .ant-table-thead > tr > th {
+    background-image: linear-gradient(to bottom , rgba(255, 196, 113, 0.589), rgb(255, 243, 220));
+    
+}
+td.ant-table-column-sort {
+    background: none !important;
+}

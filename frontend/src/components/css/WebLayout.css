@@ -1,0 +1,24 @@
+.ant-menu-dark.ant-menu-horizontal > .ant-menu-item:hover {
+    background-color: rgb(35, 35, 35) !important;
+}
+
+.ant-menu.ant-menu-dark .ant-menu-item-selected {
+    background-color: rgb(35, 35, 35) !important;
+}
+
+.ant-breadcrumb-separator {
+    margin: 0 8px;
+    color: rgba(255, 255, 255, 0.45) !important;
+}
+
+.header {
+    background-color: rgba(129,34,35,1) !important;
+    z-index: 1000;
+}
+
+@media screen and (max-width: 1050px) {
+    
+    .pHeader {
+        display:none;
+    }
+}

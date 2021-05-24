@@ -1,0 +1,13 @@
+
+
+.imgHome {
+  height: 40vw;  
+  
+
+}
+
+@media screen and (max-width: 520px) {
+  .imgHome {
+    height: 40vh;
+  }
+}
