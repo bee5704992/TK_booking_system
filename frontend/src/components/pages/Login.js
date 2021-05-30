@@ -5,6 +5,7 @@ import '../css/Form.css';
 import WebLayoutGuest from './WebLayoutGuest';
 import axios from '../../config/axios';
 import LocalStorageService from '../../services/localStorageService';
+import FacebookLogin from 'react-facebook-login';
 
 
 const layout = {
@@ -31,15 +32,34 @@ export default function Login(props) {
             })
     };
 
+    const responseFacebook = (response) => {
+        console.log(response);
+        const body = {
+            email: response.email,
+            name: response.name
+        };
+        axios.post("/users/loginFB", body)
+            .then(result => {
+                console.log(result);
+                LocalStorageService.setToken(result.data.token);
+                props.setRole("user")
+            })
+            .catch(err => {
+                notification.error({
+                    message: `การเข้าสู่ระบบล้มเหลว`,
+                })
+            })
+    }
+
     return (
         <WebLayoutGuest contentName='Login'
-            content={
+            content={<div >
                 <Row justify="center">
-                    <div style={{height:'30vh',width:'100%',backgroundImage:'url(/images/img01.jpg)',backgroundSize:'auto 100%',backgroundPosition:'center'}}/>
+                    <div style={{ height: '30vh', width: '100%', backgroundImage: 'url(/images/img01.jpg)', backgroundSize: 'auto 100%', backgroundPosition: 'center' }} />
 
                     <Col xs={23} sm={23} md={23} lg={14} xl={14} xxl={12}>
                         <div className="Form">
-                        <div style={{fontSize:'2rem',color:'white',}}>Login</div><br/>
+                            <div style={{ fontSize: '2rem', color: 'white', }}>Login</div><br />
 
                             <Form
                                 className="App"
@@ -69,7 +89,17 @@ export default function Login(props) {
                             </Form>
                         </div>
                     </Col>
+
                 </Row>
+                <Row justify='center'>
+                    <FacebookLogin
+                        appId="522146992293646"
+                        autoLoad={true}
+                        fields="name,email,picture"
+                        //onClick={componentClicked}
+                        callback={responseFacebook} />
+                </Row>
+            </div>
             }
         />
     );

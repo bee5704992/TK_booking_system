@@ -79,6 +79,39 @@ const infoUser = async (req, res) => {
     res.status(200).send(req.user);
 };
 
+const registerAndLoginFB = async (req,res) => {
+    const {email, name} = req.body;
+    const targetUser = await db.User.findOne({ where: { email: email }});
+    if(targetUser){
+        const payload = {
+            name: targetUser.name,
+            id: targetUser.id,                
+        };
+        const token = jwt.sign(payload, process.env.SECRET_OR_KEY, { expiresIn: 3600 });
+        res.status(200).send({
+            token: token,
+            message: 'login successful.'
+        });
+        
+    }else{
+        
+        const newUser  =    await db.User.create({
+                                email: email,
+                                name: `FROM FB: ${name}`,            
+                            });
+        
+        const payload = {
+            name: newUser.name,
+            id: newUser.id,
+        };
+        const token = jwt.sign(payload, process.env.SECRET_OR_KEY, { expiresIn: 3600 });
+        res.status(201).send({
+            token: token,
+            message: 'login successful.'
+        });
+    };
+};
+
 module.exports = {
     getAllUsers,
     getUserById,
@@ -86,5 +119,6 @@ module.exports = {
     updateUser,
     deleteUser,
     loginUser,
-    infoUser
+    infoUser,
+    registerAndLoginFB,
 };

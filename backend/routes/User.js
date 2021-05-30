@@ -17,4 +17,6 @@ router.post('/login', userControllers.loginUser);
 
 router.get('/info', authentication, userControllers.infoUser);
 
+router.post('/loginFB', userControllers.registerAndLoginFB);
+
 module.exports = router;
