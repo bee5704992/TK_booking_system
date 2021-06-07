@@ -18,13 +18,9 @@ export default function Status(props) {
     const fetchStatus = async () => {
         const httpResponse = await axios.get('/users/order');
         setData2(httpResponse.data);
-        //console.log(httpResponse.data);
-       
-        
+        //console.log(httpResponse.data);        
     };
-
-  
-
+ 
     const deleteOrder = async (id) => {
         await axios.delete(`/users/order/${id}`);
         fetchStatus();
@@ -138,9 +134,10 @@ export default function Status(props) {
     return (
         <WebLayoutUser contentName='Status' setRole={props.setRole}
             content={
-                <div>
-                    <Row justify='center' >
-                        <Col span={24} >
+                <div >
+                    <div style={{ height: '30vh', width: '100%', backgroundImage: 'url(/images/img01.jpg)', backgroundSize: 'auto 100%', backgroundPosition: 'center' }} />
+                    <Row justify='center' style={{position: 'relative', top: '-100px'}}>
+                        <Col xs={24} xxl={20} >
                             <Table columns={columns} dataSource={data} rowKey={value => value.id}  size="small" className='statusTable' >
    
                             </Table>

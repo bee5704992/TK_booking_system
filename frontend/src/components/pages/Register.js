@@ -14,6 +14,12 @@ const layout = {
     wrapperCol: { xs: 24, sm: 17, md: 18, lg: 18, xl: 19, xxl: 20 },
 };
 function Register(props) {
+    
+        /*axios.get('https://covid19.ddc.moph.go.th/api/open/today').then(
+            (res) => {
+                console.log(res);
+            }
+        );*/
 
     const onFinish = values => {
         //console.log('Received values of form: ', values);

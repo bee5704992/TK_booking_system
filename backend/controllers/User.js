@@ -8,8 +8,8 @@ const getAllUsers = async (req, res) => {
 };
 
 const getUserById = async (req, res) => {
-    const targetId = req.params.id;
-    const targetUser = await db.User.findOne({ where: { id: Number(targetId) }});
+    
+    const targetUser = await db.User.findOne({ where: { id: Number(req.user.id) }});
     res.status(200).send(targetUser);
 };
 
@@ -32,12 +32,11 @@ const createUser = async (req, res) => {
 };
 
 const updateUser = async (req, res) => {
-    const {email, password, name} = req.body;
+    const {name, phone} = req.body;
     const targetId = req.params.id;
     await db.User.update({
-        email: email,
-        password: password,
-        name: name
+        name: name,
+        phone: phone,
     }, {
         where: {id: targetId}
     });
@@ -62,7 +61,8 @@ const loginUser = async (req, res) => {
         if(isCorrectPassword){
             const payload = {
                 name: targetUser.name,
-                id: targetUser.id,                
+                id: targetUser.id,
+                phone: targetUser.phone,                
             };
             const token = jwt.sign(payload, process.env.SECRET_OR_KEY, { expiresIn: 3600 });
             res.status(200).send({

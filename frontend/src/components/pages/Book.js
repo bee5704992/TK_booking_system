@@ -221,7 +221,9 @@ const Book = (props) => {
                 }
               ]}
             >
-              <DatePicker style={{ display: 'inline-block' }} />
+              
+              <DatePicker style={{ display: 'inline-block',width: '130px' }} />
+              
             </Form.Item>
             <Form.Item
               name='time-picker'
@@ -232,7 +234,7 @@ const Book = (props) => {
                 }
               ]}
             >
-              <TimePicker format='HH:mm' />
+              <TimePicker format='HH:mm' style={{ display: 'inline-block',width: '130px' }} />
             </Form.Item>
             <Form.Item>
               <Button type="primary" htmlType="submit">

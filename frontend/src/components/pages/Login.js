@@ -51,6 +51,7 @@ export default function Login(props) {
             })
     }
 
+
     return (
         <WebLayoutGuest contentName='Login'
             content={<div >
@@ -82,23 +83,32 @@ export default function Login(props) {
                                 >
                                     <Input.Password />
                                 </Form.Item>
-
-                                <Button className="Button" type="primary" htmlType="submit">
-                                    Submit
-                                </Button>
+                                
+                                    <Col span={24} style={{marginBottom:'20px'}}>
+                                        <Button className="Button" type="primary" htmlType="submit" style={{width:'160px'}}>
+                                            Submit
+                                        </Button>
+                                    </Col>
+                                    <Col span={24}>
+                                    
+                                        <FacebookLogin
+                                            appId="522146992293646"
+                                            autoLoad={false}
+                                            fields="name,email,picture"
+                                            //onClick={componentClicked}
+                                            cssClass='fb-button'
+                                            callback={responseFacebook} />
+                                    
+                                    </Col>
+                                
                             </Form>
                         </div>
                     </Col>
 
                 </Row>
-                <Row justify='center'>
-                    <FacebookLogin
-                        appId="522146992293646"
-                        autoLoad={true}
-                        fields="name,email,picture"
-                        //onClick={componentClicked}
-                        callback={responseFacebook} />
-                </Row>
+
+
+
             </div>
             }
         />
